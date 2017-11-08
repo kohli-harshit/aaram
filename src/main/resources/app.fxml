@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="mainwindow" maxHeight="600.0" maxWidth="400.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" snapToPixel="false" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Controller">
+    <children>
+        <AnchorPane fx:id="topbar" prefHeight="103.0" prefWidth="400.0" style="-fx-background-color: #3D4956; -fx-background-radius: 5; -fx-border-radius: 5;" visible="false" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fx:id="download" fitHeight="40.0" fitWidth="40.0" layoutX="134.0" layoutY="28.0" onMouseClicked="#handlebutton" onMouseEntered="#updateGenerateImageToGreen" onMouseExited="#updateGenerateImageToDefault" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/download_gray.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="info" fitHeight="40.0" fitWidth="40.0" layoutX="229.0" layoutY="32.0" onMouseClicked="#handlebutton" onMouseEntered="#updateInfoImageToGreen" onMouseExited="#updateInfoImageToDefault" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/info_gray.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="create" fitHeight="40.0" fitWidth="48.0" layoutX="39.0" layoutY="28.0" onMouseClicked="#handlebutton" onMouseEntered="#updateCreateImageToGreen" onMouseExited="#updateCreateImageToDefault" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/create_gray.png" />
+                    </image>
+                </ImageView>
+                <ImageView fx:id="power" fitHeight="40.0" fitWidth="40.0" layoutX="319.0" layoutY="32.0" onMouseClicked="#handlebutton" onMouseEntered="#updatePowerImageToGreen" onMouseExited="#updatePowerImageToDefault" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/shutdown_gray.png" />
+                    </image>
+                </ImageView>
+            </children>
+            <effect>
+                <InnerShadow />
+            </effect>
+        </AnchorPane>
+        <AnchorPane fx:id="generatewindow" layoutX="-1.0" layoutY="108.0" prefHeight="491.0" prefWidth="400.0" style="-fx-background-color: #3D4956; -fx-background-radius: 5;" visible="false">
+            <children>
+                <ScrollPane fx:id="generatescrollPane" layoutX="26.0" layoutY="17.0" prefHeight="322.0" prefWidth="348.0" style="-fx-background-color: rgba(0, 0, 0, 0);">
+                    <content>
+                        <VBox fx:id="swaggersections" prefHeight="322.0" prefWidth="349.0" styleClass="scroll-pane" stylesheets="@css/scrollpane.css" />
+                    </content>
+                </ScrollPane>
+                <Button fx:id="btnGenerateCode" layoutX="136.0" layoutY="426.0" mnemonicParsing="false" onAction="#generateCode" onMouseEntered="#btnGenerateMouseEntered" onMouseExited="#btnGenerateMouseExited" prefHeight="25.0" prefWidth="128.0" text="Generate Code" />
+                <TextField fx:id="txtCodeLocation" layoutX="118.0" layoutY="375.0" prefHeight="25.0" prefWidth="256.0" promptText="Enter location to store automation code" text="C:\ApiArt-AARAM" />
+                <Label fx:id="lblCodeLocation" alignment="CENTER" layoutX="6.0" layoutY="379.0" prefHeight="17.0" prefWidth="100.0" text="Code Location:" textAlignment="RIGHT" textFill="WHITE" />
+                <ImageView fx:id="generateprogress" fitHeight="156.0" fitWidth="152.0" layoutX="124.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@images/gihubprogress.gif" />
+                    </image>
+                </ImageView>
+                <Label fx:id="lblGenerateStatus" layoutX="51.0" layoutY="249.0" prefHeight="17.0" prefWidth="298.0" text="Getting API Automation Template Code from GitHub..." textAlignment="CENTER" textFill="WHITE" visible="false" />
+                <ImageView fx:id="generatecodeprogress" fitHeight="134.0" fitWidth="201.0" layoutX="100.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                    <image>
+                        <Image url="@images/codegenerationprogress.gif" />
+                    </image>
+                </ImageView>
+                <Label fx:id="lblGenerateCodeStatus" layoutX="83.0" layoutY="248.0" prefHeight="17.0" prefWidth="249.0" text="Creating Automated code to call REST APIs...." textAlignment="CENTER" textFill="WHITE" visible="false" />
+                <MenuButton fx:id="menuButton" layoutX="124.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="201.0" visible="false" />
+            </children>
+            <effect>
+                <InnerShadow />
+            </effect>
+        </AnchorPane>
+        <AnchorPane fx:id="splashwindow" prefHeight="103.0" prefWidth="400.0" style="-fx-background-color: #3D4956; -fx-background-radius: 5; -fx-border-radius: 5;">
+            <effect>
+                <InnerShadow />
+            </effect>
+            <children>
+                <Label fx:id="lblLoading" alignment="CENTER" layoutX="80.0" layoutY="70.0" prefHeight="17.0" prefWidth="241.0" text="Loading Status" textFill="#eeecec" />
+                <ImageView fx:id="imgFidget" fitHeight="70.0" fitWidth="56.0" layoutX="172.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/lg.fidget-spinner.gif" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="downloadwindow" layoutY="110.0" prefHeight="491.0" prefWidth="400.0" style="-fx-background-color: #3D4956; -fx-background-radius: 5;" visible="false">
+            <effect>
+                <InnerShadow />
+            </effect>
+            <children>
+                <AnchorPane fx:id="nodownloadwindow" prefHeight="491.0" prefWidth="400.0">
+                    <children>
+                        <Label layoutX="84.0" layoutY="83.0" text="Nothing here yet..." textFill="#d4d0d0">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Label>
+                        <Label layoutX="156.0" layoutY="335.0" text="for some magic !" textFill="#d4d0d0">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Label>
+                        <ImageView fx:id="create_noDownload" fitHeight="40.0" fitWidth="48.0" layoutX="109.0" layoutY="330.0" onMouseClicked="#handlebutton" onMouseEntered="#updateCreateDownloadImageToGreen" onMouseExited="#updateCreateDownloadImageToDefault" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/create_gray.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="38.0" layoutY="335.0" text="Click" textFill="#d4d0d0">
+                            <font>
+                                <Font size="27.0" />
+                            </font>
+                        </Label>
+                        <ImageView fitHeight="103.0" fitWidth="220.0" layoutX="84.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/Not_Found.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="resultwindow" layoutX="46.0" layoutY="27.0" prefHeight="417.0" prefWidth="308.0" visible="false">
+                    <children>
+                        <ImageView fx:id="imgsuccess" fitHeight="203.0" fitWidth="256.0" layoutX="26.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/success.gif" />
+                            </image>
+                        </ImageView>
+                        <Hyperlink fx:id="linksuccess" alignment="CENTER" layoutX="4.0" layoutY="292.0" pickOnBounds="false" prefHeight="33.0" prefWidth="298.0" text="Click here to see Automated code" textFill="#58d68d" visited="true">
+                            <font>
+                                <Font size="16.0" />
+                            </font></Hyperlink>
+                        <Label fx:id="lblsuccesspart1" alignment="CENTER_RIGHT" layoutX="1.0" layoutY="44.0" prefHeight="20.0" prefWidth="188.0" text="Looks like everything is" textFill="#ebe7e7">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lblsuccesspart2" alignment="CENTER" layoutX="189.0" layoutY="36.0" prefHeight="35.0" prefWidth="100.0" text="200 OK" textFill="#3bd08a">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="inspectwindow" layoutY="111.0" prefHeight="491.0" prefWidth="400.0" style="-fx-background-color: #3D4956; -fx-background-radius: 5;" visible="false">
+            <children>
+                <TextField fx:id="txtSwagger" blendMode="LIGHTEN" depthTest="DISABLE" focusTraversable="false" layoutX="14.0" layoutY="126.0" nodeOrientation="LEFT_TO_RIGHT" onAction="#onEnterTextSwagger" onMouseEntered="#txtSwaggerMouseEntered" pickOnBounds="false" prefHeight="25.0" prefWidth="372.0" promptText="Enter Swagger Link" />
+                <Button fx:id="btnInspect" layoutX="131.0" layoutY="183.0" mnemonicParsing="false" onAction="#inspect" onKeyPressed="#showGenerateWindow" onMouseEntered="#btnInspectMouseEntered" onMouseExited="#btnInspectMouseExited" prefHeight="25.0" prefWidth="138.0" text="Inspect" />
+                <ImageView fx:id="imgSwagger" fitHeight="70.0" fitWidth="79.0" layoutX="165.0" layoutY="31.0" onMouseEntered="#imgSwaggerShowToolTip" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/swagger-logo.png" />
+                    </image>
+                </ImageView>
+                <JFXProgressBar fx:id="inspectloadingindicator" layoutX="100.0" layoutY="221.0" prefHeight="3.0" visible="false" />
+                <ComboBox fx:id="comboBoxPagesList" layoutX="115.0" layoutY="282.0" prefHeight="25.0" prefWidth="177.0" visible="false" />
+                <Label fx:id="multiplePagesLabel" alignment="CENTER" layoutX="29.0" layoutY="249.0" prefHeight="17.0" prefWidth="348.0" text="This URL has multiple pages. Please select one:-" textFill="WHITE" visible="false" />
+            </children>
+            <effect>
+                <InnerShadow />
+            </effect>
+        </AnchorPane>
+        <AnchorPane fx:id="helpwindow" layoutY="111.0" prefHeight="491.0" prefWidth="400.0" style="-fx-background-color: #3D4956; -fx-background-radius: 5;" visible="false">
+            <effect>
+                <InnerShadow />
+            </effect>
+            <children>
+                <Text fill="#fdfffe" layoutX="19.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Click on ">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Text>
+                <ImageView fitHeight="33.0" fitWidth="22.0" layoutX="102.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/create_gray.png" />
+                    </image>
+                </ImageView>
+                <Text fill="#fdfffe" layoutX="132.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="to inspect a Swagger link. E.g:">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Text>
+                <Text fill="#fdfffe" layoutX="19.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. Select the Api's that you need to automate by clicking on respective checkboxes." wrappingWidth="354.5468807220459">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Text>
+                <Text fill="#fdfffe" layoutX="16.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4.         Download Screen should open which displays the status of the code generation." wrappingWidth="354.5468807220459">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Text>
+                <ImageView fitHeight="23.0" fitWidth="22.0" layoutX="37.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/download_gray.png" />
+                    </image>
+                </ImageView>
+                <Text fill="#fdfffe" layoutX="16.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. In order to know more about AARAM, please visit our GitHub page:-" wrappingWidth="367.99999371171">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Text>
+                <Hyperlink fx:id="examplelink" alignment="CENTER" layoutX="20.0" layoutY="58.0" onAction="#openDocumentation" prefHeight="23.0" prefWidth="368.0" text="http://petstore.swagger.io/" textFill="#58d68d">
+                    <font>
+                        <Font name="System Italic" size="12.0" />
+                    </font>
+                </Hyperlink>
+                <Hyperlink fx:id="documentationlink" alignment="CENTER" layoutX="1.0" layoutY="434.0" onAction="#openDocumentation" prefHeight="23.0" prefWidth="394.0" text="https://github.com/kohli-harshit/aaram/blob/master/README.md" textFill="#58d68d">
+                    <font>
+                        <Font name="System Italic" size="12.0" />
+                    </font></Hyperlink>
+                <Text fill="#fdfffe" layoutX="19.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. Provide the Location where you want to store the auto-generated code(default location is your Desktop) and click Generate." wrappingWidth="348.00000190734863">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Text>
+                <Text fill="#fdfffe" layoutX="16.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. If the status corresponds to 200 OK, then a link at the bottom will redirect you to your filesystem where the auto-generated code is present." wrappingWidth="354.5468807220459">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

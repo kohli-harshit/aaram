@@ -1,0 +1,7 @@
+.myDialog{
+     -fx-background-color: #3D4956;
+ }
+
+ .myDialog > *.label.content{
+     -fx-text-fill: white;
+ }

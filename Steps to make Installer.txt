@@ -1,0 +1,43 @@
+Windows:-
+
+a) Navigate to Directory where pom.xml is present
+b) Execute the command mvn jfx:jar
+c) This should create a folder named app in \target\jfx with AARAM-jfx jar file and 2 folders - src and lib
+d) Using Launch4J, create exe by specifying following details:-
+	1) Basic -> Output File should be \target\jfx\AARAM.exe
+	2) Basic -> Jar should be \target\jfx\AARAM-jfx.jar
+	3) Basic -> Icon should be \target\jfx\app\src\main\resources\images\monotype.ico
+	3) JRE -> Min JRE Version should be 1.8.0_111
+e) Using InnoSetup, open the SetupConfig.iss and provide relevant paths to files
+f) Output folder with AARAMsetup.exe should be created in the base directory
+
+
+Mac:-
+a) First three steps are similar as in windows
+b) Using install4j, create dmg file by specifying following details:
+     (i) General Setings
+        1) Click on Application Info and fill basic details like name,version and publisher.
+        2) Click on java version and give minimum version of java you are using in your project
+        3) Click on Media File Options and give the path in media file output directory where  you want to create your dmg file.
+
+    (ii)Files
+        1)Click on Define Distribution tree. on the right side there will be plus(+) sign click on it and give your app folder here that was created in target folder
+        2)click next
+
+    (iii)Launchers
+        1)Double click on launcher.
+        2) click on generated Launcher
+        3) Give executable file name and give directory of app folder
+        4) add icon to launcher. In macOs section click on icns file and give icns image for icon
+        5) java invocation window:
+            a) click on plus sign and give jar file in archive and give main class.
+        6) It will create a launcher name AARAM
+
+     (iv)Media
+        1) choose macos single bundle installer
+        2) Select AARAM from dropdown
+        3)Press next untill finished
+
+     (v) Build
+        1) in Build options check enable extra verbose output and click start build
+        2) click evaluate
